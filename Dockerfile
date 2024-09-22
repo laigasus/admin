@@ -3,6 +3,8 @@ LABEL authors="okjaeook"
 WORKDIR /app
 COPY gradle/ gradle
 COPY gradlew build.gradle settings.gradle ./
+
+RUN chmod +x gradlew
 RUN ./gradlew build --stacktrace || return 0
 COPY src ./src
 
@@ -10,6 +12,7 @@ FROM base AS development
 CMD ["./gradlew", "bootRun", "-Dspring-boot.run.jvmArguments='-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8080'"]
 
 FROM base AS build
+RUN chmod +x gradlew
 RUN ./gradlew build
 
 FROM gradle:jdk17-alpine AS production
