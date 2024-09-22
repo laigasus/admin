@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{member.edit.headline}]]</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 class="flex-grow-1">[[#{member.edit.headline}]]</h1>
+                <div>
+                    <a th:href="@{/members}" class="btn btn-secondary">[[#{member.edit.back}]]</a>
+                </div>
+            </div>
+            <div th:replace="~{fragments/forms::globalErrors('member')}" />
+            <form th:action="${requestUri}" method="post">
+                <div th:replace="~{fragments/forms::inputRow(object='member', field='id', disabled=true, type='number')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='member', field='name')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='member', field='gender', type='radio')}" />
+                <input type="submit" th:value="#{member.edit.headline}" class="btn btn-primary mt-4" />
+            </form>
+        </div>
+    </body>
+</html>

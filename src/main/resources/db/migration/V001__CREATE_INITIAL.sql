@@ -1,0 +1,10 @@
+CREATE SEQUENCE primary_sequence START WITH 10000 INCREMENT BY 1;
+
+CREATE TABLE member (
+    id BIGINT NOT NULL,
+    name VARCHAR(255),
+    gender VARCHAR(100),
+    date_created TIMESTAMP NOT NULL,
+    last_updated TIMESTAMP NOT NULL,
+    CONSTRAINT PK_MEMBER PRIMARY KEY (id)
+);

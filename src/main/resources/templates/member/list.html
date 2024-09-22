@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{member.list.headline}]]</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 class="flex-grow-1">[[#{member.list.headline}]]</h1>
+                <div>
+                    <a th:href="@{/members/add}" class="btn btn-primary ms-2">[[#{member.list.createNew}]]</a>
+                </div>
+            </div>
+            <div th:if="${!members.empty || filter != null}" class="row">
+                <div th:replace="~{fragments/utils::searchFilter(object='member')}" />
+                <div th:replace="~{fragments/utils::sorting(object='member', sortOptions=${ {'id,ASC', 'name,ASC', 'gender,ASC'} }, columnClass='offset-lg-4')}" />
+            </div>
+            <div th:if="${members.empty}">[[#{member.list.empty}]]</div>
+            <div th:if="${!members.empty}" class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">[[#{member.id.label}]]</th>
+                            <th scope="col">[[#{member.name.label}]]</th>
+                            <th scope="col">[[#{member.gender.label}]]</th>
+                            <th><!-- --></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="member : ${members}">
+                            <td>[[${member.id}]]</td>
+                            <td>[[${member.name}]]</td>
+                            <td>[[${member.gender}]]</td>
+                            <td>
+                                <div class="float-end text-nowrap">
+                                    <a th:href="@{/members/edit/{id}(id=${member.id})}" class="btn btn-sm btn-secondary">[[#{member.list.edit}]]</a>
+                                    <form th:action="@{/members/delete/{id}(id=${member.id})}"
+                                            th:hx-confirm="#{delete.confirm}" method="post" class="d-inline">
+                                        <button type="submit" class="btn btn-sm btn-secondary">[[#{member.list.delete}]]</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div th:replace="~{fragments/utils::pagination()}" />
+        </div>
+    </body>
+</html>
