@@ -47,4 +47,6 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ghcr.io/${{ github.actor }}/application:${{ steps.tag_version.outputs.new_tag }}
+          tags: |
+            ghcr.io/${{ github.actor }}/application:${{ steps.tag_version.outputs.new_tag }}
+            ghcr.io/${{ github.actor }}/application:latest
