@@ -1,5 +1,9 @@
 FROM gradle:jdk17-alpine AS base
-LABEL authors="okjaeook"
+
+LABEL org.opencontainers.image.source=https://github.com/laigasus/admin
+LABEL org.opencontainers.image.description="admin example for SeSAC"
+LABEL org.opencontainers.image.licenses=MIT
+
 WORKDIR /app
 COPY gradle/ gradle
 COPY gradlew build.gradle settings.gradle ./
