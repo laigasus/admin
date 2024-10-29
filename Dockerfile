@@ -1,8 +1,8 @@
-FROM gradle:jdk17-alpine AS base
-
-LABEL org.opencontainers.image.source=https://github.com/laigasus/admin
+LABEL org.opencontainers.image.source="https://github.com/laigasus/admin"
 LABEL org.opencontainers.image.description="admin example for SeSAC"
-LABEL org.opencontainers.image.licenses=MIT
+LABEL org.opencontainers.image.licenses="MIT"
+
+FROM gradle:jdk17-alpine AS base
 
 WORKDIR /app
 COPY gradle/ gradle
