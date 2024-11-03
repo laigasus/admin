@@ -21,6 +21,11 @@ jobs:
           java-version: '17'
           distribution: 'corretto'
 
+      - name: Set up Nodejs legacy
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
       - name: Grant execute permission for gradlew
         run: |
           chmod +x ./gradlew
@@ -34,7 +39,7 @@ jobs:
           cp ./build/openapi.json ./
 
       - name: redoc-cli join
-        uses: DeltaLaboratory/redocly-cli-action@v1.0.0
+        uses: DeltaLaboratory/redocly-cli-action@
         with:
           args: 'join *.json -o api.yaml'
 
