@@ -24,7 +24,7 @@ jobs:
       - name: Set up Nodejs legacy
         uses: actions/setup-node@v4
         with:
-          node-version: 15
+          node-version: 14
 
       - name: Grant execute permission for gradlew
         run: |
