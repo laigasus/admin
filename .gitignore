@@ -34,6 +34,6 @@ bin/
 ## NetBeans
 /nbproject/private/
 /nbbuild/
-/dist/
+/docs/
 /nbdist/
 /.nb-gradle/
