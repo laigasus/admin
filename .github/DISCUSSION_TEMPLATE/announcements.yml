@@ -3,8 +3,9 @@ labels: ["Announcements"]
 body:
   - type: markdown
     attributes:
-      value: "## 지난 주"
-        
+      value: |
+        ## 지난 주
+        지난 주의 과업입니다
   - type: textarea
     id: last_cj
     attributes:
@@ -47,8 +48,9 @@ body:
 
   - type: markdown
     attributes:
-      value: "## 이번 주"
-
+      value: |
+        ## 이번 주
+        수행해야 할 업무 목록입니다
   - type: textarea
     id: this_cj
     attributes:
