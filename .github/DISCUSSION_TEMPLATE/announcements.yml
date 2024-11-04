@@ -1,5 +1,5 @@
 title: 주간 업무 보고 
-labels: ["Announcement"]
+labels: ["Announcements"]
 body:
   - type: markdown
     attributes:
